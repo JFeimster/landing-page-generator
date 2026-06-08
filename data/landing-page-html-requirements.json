@@ -1,0 +1,14 @@
+{
+  "required": [
+    "viewport meta tag",
+    "title tag",
+    "meta description",
+    "Open Graph tags",
+    "responsive CSS",
+    "CTA buttons",
+    "form validation",
+    "image placeholders",
+    "alt text",
+    "analytics placeholders"
+  ]
+}

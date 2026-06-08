@@ -1,0 +1,22 @@
+{
+  "name": "landing-page-generator-actions",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Optional no-authentication Action service for Landing Page Generator.",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "test": "echo \"Add tests\""
+  },
+  "dependencies": {
+    "@types/node": "latest",
+    "express": "latest",
+    "zod": "latest"
+  },
+  "devDependencies": {
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}

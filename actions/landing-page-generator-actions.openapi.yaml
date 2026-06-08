@@ -1,0 +1,283 @@
+openapi: 3.1.0
+info:
+  title: Landing Page Generator Actions
+  version: 0.1.0
+  description: No-authentication utility actions for Landing Page Generator.
+servers:
+  - url: https://example.com
+    description: Replace with your deployed Action service URL.
+paths:
+  /analyze-url:
+    post:
+      operationId: analyzeUrl
+      summary: Analyze a public website URL for positioning and landing page signals.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [url]
+              properties:
+                url:
+                  type: string
+                  description: Public URL to analyze.
+      responses:
+        "200":
+          description: Positioning analysis result.
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /audit-html:
+    post:
+      operationId: auditHtml
+      summary: Audit generated landing page HTML.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [html]
+              properties:
+                html:
+                  type: string
+      responses:
+        "200":
+          description: HTML audit report.
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /score-copy:
+    post:
+      operationId: scoreCopy
+      summary: Score landing page copy for conversion quality.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [copy]
+              properties:
+                copy:
+                  type: string
+      responses:
+        "200":
+          description: Copy scorecard.
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /validate-proof:
+    post:
+      operationId: validateProof
+      summary: Detect unsupported claims and fabricated proof.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [copy]
+              properties:
+                copy:
+                  type: string
+      responses:
+        "200":
+          description: Proof validation result.
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /build-offer-stack:
+    post:
+      operationId: buildOfferStack
+      summary: Build a structured landing page offer stack.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [offer_notes]
+              properties:
+                offer_notes:
+                  type: string
+      responses:
+        "200":
+          description: Offer stack.
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /generate-faqs:
+    post:
+      operationId: generateFaqs
+      summary: Generate FAQs from product, audience, and objections.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [product_notes]
+              properties:
+                product_notes:
+                  type: string
+                objections:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "200":
+          description: FAQ list.
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /generate-cta-variants:
+    post:
+      operationId: generateCtaVariants
+      summary: Generate CTA copy variants.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [offer, audience]
+              properties:
+                offer:
+                  type: string
+                audience:
+                  type: string
+                tone:
+                  type: string
+      responses:
+        "200":
+          description: CTA variants.
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /generate-design-tokens:
+    post:
+      operationId: generateDesignTokens
+      summary: Generate design tokens for a landing page.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [brand_notes]
+              properties:
+                brand_notes:
+                  type: string
+      responses:
+        "200":
+          description: Design tokens.
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /generate-image-briefs:
+    post:
+      operationId: generateImageBriefs
+      summary: Generate visual asset briefs for a landing page.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [landing_page_notes]
+              properties:
+                landing_page_notes:
+                  type: string
+      responses:
+        "200":
+          description: Image briefs.
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /map-input-to-sections:
+    post:
+      operationId: mapInputToSections
+      summary: Map raw user notes into landing page sections.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [raw_notes]
+              properties:
+                raw_notes:
+                  type: string
+      responses:
+        "200":
+          description: Section map.
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /package-landing-page:
+    post:
+      operationId: packageLandingPage
+      summary: Package landing page HTML into a project structure.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [html]
+              properties:
+                html:
+                  type: string
+      responses:
+        "200":
+          description: Package manifest or downloadable package metadata.
+          content:
+            application/json:
+              schema:
+                type: object
+
+  /compare-competitors:
+    post:
+      operationId: compareCompetitors
+      summary: Compare public competitor landing pages.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [urls]
+              properties:
+                urls:
+                  type: array
+                  items:
+                    type: string
+      responses:
+        "200":
+          description: Competitor comparison.
+          content:
+            application/json:
+              schema:
+                type: object

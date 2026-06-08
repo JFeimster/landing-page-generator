@@ -1,0 +1,17 @@
+{
+  "hero_image": {
+    "size": "1920x1080",
+    "purpose": "Show the product or service outcome in context.",
+    "notes": "Use a clean, credible, conversion-focused visual."
+  },
+  "testimonial_avatar": {
+    "size": "80x80",
+    "purpose": "Show real customer identity when supplied.",
+    "notes": "Use placeholder only when no real testimonial is supplied."
+  },
+  "feature_icon": {
+    "size": "64x64",
+    "purpose": "Represent a product or service feature clearly.",
+    "notes": "Use a simple, consistent icon style."
+  }
+}

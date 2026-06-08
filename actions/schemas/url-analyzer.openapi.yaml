@@ -1,0 +1,8 @@
+openapi: 3.1.0
+info:
+  title: url-analyzer
+  version: 0.1.0
+  description: Placeholder OpenAPI schema for url-analyzer.
+servers:
+  - url: https://example.com
+paths: {}

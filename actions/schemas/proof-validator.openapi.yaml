@@ -1,0 +1,8 @@
+openapi: 3.1.0
+info:
+  title: proof-validator
+  version: 0.1.0
+  description: Placeholder OpenAPI schema for proof-validator.
+servers:
+  - url: https://example.com
+paths: {}

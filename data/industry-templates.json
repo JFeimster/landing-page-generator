@@ -1,0 +1,37 @@
+{
+  "saas": {
+    "common_pains": [],
+    "common_objections": [],
+    "proof_types": [],
+    "cta_styles": [],
+    "trust_signals": []
+  },
+  "agency": {
+    "common_pains": [],
+    "common_objections": [],
+    "proof_types": [],
+    "cta_styles": [],
+    "trust_signals": []
+  },
+  "coaching": {
+    "common_pains": [],
+    "common_objections": [],
+    "proof_types": [],
+    "cta_styles": [],
+    "trust_signals": []
+  },
+  "local_service": {
+    "common_pains": [],
+    "common_objections": [],
+    "proof_types": [],
+    "cta_styles": [],
+    "trust_signals": []
+  },
+  "ecommerce": {
+    "common_pains": [],
+    "common_objections": [],
+    "proof_types": [],
+    "cta_styles": [],
+    "trust_signals": []
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "criteria": {
+    "clarity": 10,
+    "specificity": 10,
+    "pain_strength": 10,
+    "offer_strength": 10,
+    "proof_strength": 10,
+    "cta_strength": 10,
+    "objection_handling": 10,
+    "trust": 10,
+    "urgency": 10,
+    "readability": 10
+  }
+}

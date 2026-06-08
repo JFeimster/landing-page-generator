@@ -1,0 +1,17 @@
+{
+  "too_expensive": {
+    "strategy": "Reframe around cost of inaction and value received.",
+    "proof_needed": ["ROI", "time saved", "customer outcomes"],
+    "faq_angle": "Why is this worth the investment?"
+  },
+  "no_time": {
+    "strategy": "Show speed, simplicity, and reduced implementation burden.",
+    "proof_needed": ["setup time", "process steps", "support details"],
+    "faq_angle": "How much time does this take?"
+  },
+  "dont_trust_it": {
+    "strategy": "Use real proof, transparent process, guarantees, and risk reversal.",
+    "proof_needed": ["testimonials", "case studies", "credentials"],
+    "faq_angle": "How do I know this will work?"
+  }
+}

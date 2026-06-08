@@ -1,0 +1,15 @@
+{
+  "colors": {
+    "primary": "",
+    "secondary": "",
+    "accent": "",
+    "background": "",
+    "text": ""
+  },
+  "typography": {
+    "heading_font": "",
+    "body_font": ""
+  },
+  "spacing": {},
+  "components": {}
+}

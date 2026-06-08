@@ -1,0 +1,15 @@
+{
+  "name": "Landing Page Generator",
+  "description": "Creates high-converting landing page copy and minimal responsive HTML.",
+  "knowledge_files": [
+    "knowledge/landing-page-generator-mega-prompt.md",
+    "knowledge/landing-page-workflow.md",
+    "knowledge/section-by-section-copy-framework.md",
+    "knowledge/proof-and-placeholder-rules.md",
+    "knowledge/html-design-system.md"
+  ],
+  "actions": [
+    "actions/landing-page-generator-actions.openapi.yaml"
+  ],
+  "action_authentication": "none"
+}
