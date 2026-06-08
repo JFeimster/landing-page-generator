@@ -11,11 +11,12 @@
     "test": "echo \"Add tests\""
   },
   "dependencies": {
-    "@types/node": "latest",
     "express": "latest",
     "zod": "latest"
   },
   "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.9.2",
     "tsx": "latest",
     "typescript": "latest"
   }
