@@ -1,0 +1,61 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Funding Readiness Helper",
+    "version": "1.1.0",
+    "description": "Submits a funding-readiness scorecard and returns a public-safe result."
+  },
+  "servers": [{ "url": "https://YOUR_PUBLIC_ACTION_HOST", "description": "Public Funding Readiness Helper host" }],
+  "paths": {
+    "/api/score": {
+      "post": {
+        "operationId": "submitScorecard",
+        "summary": "Submit a funding-readiness scorecard",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/ScorecardSubmission" } } }
+        },
+        "responses": {
+          "200": {
+            "description": "A public-safe funding-readiness result",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/ScorecardResponse" },
+                "example": {
+                  "publicResult": {
+                    "readinessBand": "building",
+                    "summary": "Your funding profile has a clear next step.",
+                    "nextSteps": ["Review the readiness recommendations."]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ScorecardSubmission": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["scorecard", "applicantEmail", "applicantPhone", "consent"],
+        "properties": {
+          "scorecard": { "type": "object", "description": "The answers collected by the Funding Readiness Helper.", "additionalProperties": true },
+          "applicantEmail": { "type": "string", "format": "email", "description": "The applicant's email address." },
+          "applicantPhone": { "type": "string", "minLength": 7, "description": "The applicant's phone number, including country code when available." },
+          "consent": { "type": "boolean", "description": "Whether the applicant explicitly consented to submit the scorecard." }
+        }
+      },
+      "ScorecardResponse": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["publicResult"],
+        "properties": {
+          "publicResult": { "type": "object", "description": "Result content safe to show to the applicant.", "additionalProperties": true }
+        }
+      }
+    }
+  }
+}

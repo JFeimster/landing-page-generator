@@ -1,0 +1,9 @@
+{
+  "scorecard": {
+    "businessStage": "operating",
+    "fundingGoal": "working-capital"
+  },
+  "applicantEmail": "applicant@example.com",
+  "applicantPhone": "+12025550123",
+  "consent": true
+}
