@@ -1,0 +1,4 @@
+interface:
+  default_prompt: Build a landing page for my SaaS offer
+  display_name: Landing Page Generator
+  short_description: Landing pages and HTML

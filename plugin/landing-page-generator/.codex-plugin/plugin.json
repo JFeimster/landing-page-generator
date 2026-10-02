@@ -1,0 +1,26 @@
+{
+  "author": {
+    "name": "Jason Feimster"
+  },
+  "description": "Creates high-converting landing page copy and minimal responsive HTML.",
+  "interface": {
+    "capabilities": [
+      "skills"
+    ],
+    "category": "Productivity",
+    "composerIcon": "./assets/gpt-icon.png",
+    "defaultPrompt": [
+      "Build a landing page for my SaaS offer",
+      "Use this URL to extract my landing page angle",
+      "Write the full landing page copy first"
+    ],
+    "developerName": "Jason Feimster",
+    "displayName": "Landing Page Generator",
+    "logo": "./assets/gpt-icon.png",
+    "longDescription": "Creates high-converting landing page copy and minimal responsive HTML.",
+    "shortDescription": "Landing pages and HTML"
+  },
+  "name": "gpt-7ae4dc668705b6719ce1d8e858f4facd",
+  "skills": "./skills/",
+  "version": "0.11.0"
+}

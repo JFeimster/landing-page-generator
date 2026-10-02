@@ -1,0 +1,30 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "gpt-7ae4dc668705b6719ce1d8e858f4facd",
+  "version": "0.11.0",
+  "description": "Creates high-converting landing page copy and minimal responsive HTML.",
+  "author": {
+    "name": "Jason Feimster"
+  },
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Landing Page Generator",
+        "shortDescription": "Landing pages and HTML",
+        "longDescription": "Creates high-converting landing page copy and minimal responsive HTML.",
+        "developerName": "Jason Feimster",
+        "category": "Productivity",
+        "capabilities": [
+          "Interactive"
+        ],
+        "defaultPrompt": [
+          "Build a landing page for my SaaS offer",
+          "Use this URL to extract my landing page angle",
+          "Write the full landing page copy first"
+        ],
+        "logo": "./assets/gpt-icon.png",
+        "composerIcon": "./assets/gpt-icon.png"
+      }
+    }
+  }
+}

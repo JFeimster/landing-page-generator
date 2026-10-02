@@ -1,0 +1,81 @@
+{
+  "files": [
+    {
+      "name": "Buyer Risk Categories",
+      "path": "references/buyer-risk-categories.md"
+    },
+    {
+      "name": "Competitor Analysis Framework",
+      "path": "references/competitor-analysis-framework.md"
+    },
+    {
+      "name": "Conversion Copy Principles",
+      "path": "references/conversion-copy-principles.md"
+    },
+    {
+      "name": "Differentiation Strategy Guide",
+      "path": "references/differentiation-strategy-guide.md"
+    },
+    {
+      "name": "FAQ Generation Rules",
+      "path": "references/faq-generation-rules.md"
+    },
+    {
+      "name": "Guarantee and Risk Reversal Rules",
+      "path": "references/guarantee-and-risk-reversal-rules.md"
+    },
+    {
+      "name": "HTML Design System",
+      "path": "references/html-design-system.md"
+    },
+    {
+      "name": "Landing Page Generator Mega Prompt",
+      "path": "references/landing-page-generator-mega-prompt.md"
+    },
+    {
+      "name": "Landing Page Quality Checklist",
+      "path": "references/landing-page-quality-checklist.md"
+    },
+    {
+      "name": "Landing Page Workflow",
+      "path": "references/landing-page-workflow.md"
+    },
+    {
+      "name": "Offer Stack Framework",
+      "path": "references/offer-stack-framework.md"
+    },
+    {
+      "name": "Pricing Psychology Guide",
+      "path": "references/pricing-psychology-guide.md"
+    },
+    {
+      "name": "Proof and Placeholder Rules",
+      "path": "references/proof-and-placeholder-rules.md"
+    },
+    {
+      "name": "Sample Landing Pages",
+      "path": "references/sample-landing-pages.md"
+    },
+    {
+      "name": "Section-by-Section Copy Framework",
+      "path": "references/section-by-section-copy-framework.md"
+    },
+    {
+      "name": "SEO and Metadata Checklist",
+      "path": "references/seo-and-metadata-checklist.md"
+    },
+    {
+      "name": "Tone and Brand Adaptation",
+      "path": "references/tone-and-brand-adaptation.md"
+    },
+    {
+      "name": "Visual Placeholder Standards",
+      "path": "references/visual-placeholder-standards.md"
+    },
+    {
+      "name": "Voice of Customer Processing",
+      "path": "references/voice-of-customer-processing.md"
+    }
+  ],
+  "guidelines": "Resolve each files[].path relative to the directory containing this skill's SKILL.md. Select only the references needed for the user's request. Treat examples as patterns, never as verified facts about the user's business."
+}
