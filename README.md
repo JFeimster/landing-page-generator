@@ -35,4 +35,6 @@ See `/docs/getting-started.md` and `/docs/gpt-setup.md` for setup details.
 
 ## Product expansion
 
+Explore the [site-factory specification library](site-factory/README.md) for catalogs, template contracts, examples, and implementation planning.
+
 The current repository is the landing-page foundation of a broader launch system. See `/docs/site-factory-blueprint.md` for the recommended template architecture, reusable packages, design packs, generator design, and phased implementation plan. See `/docs/roadmap.md` for the prioritized backlog.

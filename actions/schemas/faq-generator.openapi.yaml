@@ -1,8 +1,128 @@
 openapi: 3.1.0
 info:
-  title: faq-generator
-  version: 0.1.0
-  description: Placeholder OpenAPI schema for faq-generator.
+  title: Landing Page Generator Actions
+  version: 1.0.0
+  description: Deterministic no-auth utilities. Configure the server URL before importing.
 servers:
   - url: https://example.com
-paths: {}
+security: []
+paths:
+  /generate-faqs:
+    post:
+      operationId: generateFaqs
+      summary: Draft FAQ questions with supplied answers or missing-information labels.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                product_notes:
+                  type: string
+                  minLength: 1
+                  maxLength: 30000
+                objections:
+                  maxItems: 30
+                  type: array
+                  items:
+                    type: string
+                    minLength: 1
+                    maxLength: 500
+                facts:
+                  type: object
+                  properties:
+                    price:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                    timeline:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                    support:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                    refund_policy:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                  additionalProperties: false
+              required:
+                - product_notes
+              additionalProperties: false
+      responses:
+        "200":
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: &a1
+                type: object
+                required:
+                  - status
+                  - error
+                properties:
+                  status:
+                    const: error
+                  error:
+                    type: object
+                    required:
+                      - code
+                      - message
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1

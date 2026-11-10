@@ -1,8 +1,108 @@
 openapi: 3.1.0
 info:
-  title: export-packager
-  version: 0.1.0
-  description: Placeholder OpenAPI schema for export-packager.
+  title: Landing Page Generator Actions
+  version: 1.0.0
+  description: Deterministic no-auth utilities. Configure the server URL before importing.
 servers:
   - url: https://example.com
-paths: {}
+security: []
+paths:
+  /package-landing-page:
+    post:
+      operationId: packageLandingPage
+      summary: Return a base64 ZIP with HTML, optional copy and audit report.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                html:
+                  type: string
+                  minLength: 1
+                  maxLength: 300000
+                copy:
+                  type: string
+                  minLength: 1
+                  maxLength: 30000
+                project_name:
+                  type: string
+                  pattern: ^[a-z0-9][a-z0-9-]{0,49}$
+              required:
+                - html
+              additionalProperties: false
+      responses:
+        "200":
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: &a1
+                type: object
+                required:
+                  - status
+                  - error
+                properties:
+                  status:
+                    const: error
+                  error:
+                    type: object
+                    required:
+                      - code
+                      - message
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1

@@ -1,0 +1,88 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Experiment plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "hypothesis",
+    "audience",
+    "variants",
+    "success_event",
+    "guardrails",
+    "stopping_rule",
+    "owner"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "hypothesis": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Testable change and expected behavior."
+    },
+    "audience": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Eligible audience."
+    },
+    "variants": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Variant name."
+      }
+    },
+    "success_event": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Measured success event."
+    },
+    "guardrails": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Metric or condition to protect."
+      }
+    },
+    "stopping_rule": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Predefined stopping condition."
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Accountable owner."
+    }
+  },
+  "examples": [
+    {
+      "schema_version": "1.0.0",
+      "id": "cta-label",
+      "hypothesis": "A clearer label may increase form starts.",
+      "audience": "Eligible visitors",
+      "variants": [
+        "control",
+        "clear-label"
+      ],
+      "success_event": "form_started",
+      "guardrails": [
+        "No increase in form errors"
+      ],
+      "stopping_rule": "Predefined sample and duration reviewed before launch.",
+      "owner": "[Experiment owner]"
+    }
+  ]
+}

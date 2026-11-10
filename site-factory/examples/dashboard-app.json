@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "name": "[Client dashboard]",
+  "fictional": true,
+  "project_type": "dashboard",
+  "template": "dashboard",
+  "audience": "Authorized client operators",
+  "goal": "Review project activity",
+  "style": "mission-control",
+  "layout": "dashboard-shell",
+  "motion": "none",
+  "capabilities": [
+    "auth",
+    "database",
+    "api"
+  ],
+  "content_needs": [
+    "[Empty state copy]",
+    "[Sample synthetic records]"
+  ],
+  "deployment": {
+    "runtime": "server",
+    "provider": "[Choose deployment provider]",
+    "assumptions": [
+      "Configure authentication and database migrations."
+    ]
+  }
+}

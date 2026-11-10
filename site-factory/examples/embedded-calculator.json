@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0.0",
+  "name": "[Embedded calculator]",
+  "fictional": true,
+  "project_type": "embed-widget",
+  "template": "embed-widget",
+  "audience": "Visitors to partner websites",
+  "goal": "Estimate a hypothetical value",
+  "style": "playful-launch",
+  "layout": "split-screen",
+  "motion": "subtle",
+  "capabilities": [
+    "embed"
+  ],
+  "content_needs": [
+    "[Calculator formula]",
+    "[Accessible result explanation]"
+  ],
+  "deployment": {
+    "runtime": "static-or-server",
+    "provider": "[Choose deployment provider]",
+    "assumptions": [
+      "Select iframe hosting and test permitted host origins."
+    ]
+  }
+}

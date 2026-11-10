@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "name": "[SaaS concept]",
+  "fictional": true,
+  "project_type": "landing-page",
+  "template": "landing-page",
+  "audience": "Small software teams",
+  "goal": "Join a waitlist",
+  "style": "product-bento",
+  "layout": "product-showcase",
+  "motion": "subtle",
+  "capabilities": [
+    "seo",
+    "forms",
+    "analytics"
+  ],
+  "content_needs": [
+    "[Product screenshots]",
+    "[Approved waitlist copy]"
+  ],
+  "deployment": {
+    "runtime": "static",
+    "provider": "[Choose deployment provider]",
+    "assumptions": [
+      "Configure a form endpoint and consent-aware analytics."
+    ]
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "schema_version": "1.0.0",
+  "name": "[Local service]",
+  "fictional": true,
+  "project_type": "funnel",
+  "template": "funnel",
+  "audience": "Homeowners in [service area]",
+  "goal": "Request an estimate",
+  "style": "conversion-clean",
+  "layout": "narrative-funnel",
+  "motion": "subtle",
+  "capabilities": [
+    "seo",
+    "forms"
+  ],
+  "content_needs": [
+    "[Service area]",
+    "[Approved reviews]"
+  ],
+  "deployment": {
+    "runtime": "static-or-server",
+    "provider": "[Choose deployment provider]",
+    "assumptions": [
+      "Choose and connect a form destination."
+    ]
+  }
+}

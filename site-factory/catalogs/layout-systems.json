@@ -1,0 +1,37 @@
+{
+  "schema_version": "1.0.0",
+  "items": [
+    {
+      "id": "conversion-stack",
+      "description": "Sequential promise, proof, offer and CTA"
+    },
+    {
+      "id": "editorial-scroll",
+      "description": "Alternating narrative and imagery"
+    },
+    {
+      "id": "product-showcase",
+      "description": "Product-led sections and demonstrations"
+    },
+    {
+      "id": "narrative-funnel",
+      "description": "Progressive steps and CTA"
+    },
+    {
+      "id": "directory-grid",
+      "description": "Search, filters and listing cards"
+    },
+    {
+      "id": "dashboard-shell",
+      "description": "Navigation with data and actions"
+    },
+    {
+      "id": "split-screen",
+      "description": "Paired copy and persistent visual"
+    },
+    {
+      "id": "immersive-canvas",
+      "description": "Full-viewport narrative with accessible fallback"
+    }
+  ]
+}

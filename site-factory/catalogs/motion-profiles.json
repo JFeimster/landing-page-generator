@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0.0",
+  "items": [
+    {
+      "id": "none",
+      "description": "No nonessential animation",
+      "reduced_motion": "Show content immediately; remove nonessential movement."
+    },
+    {
+      "id": "subtle",
+      "description": "Short entrance and state transitions",
+      "reduced_motion": "Show content immediately; remove nonessential movement."
+    },
+    {
+      "id": "expressive",
+      "description": "Purposeful sequencing with static reduced-motion fallback",
+      "reduced_motion": "Show content immediately; remove nonessential movement."
+    }
+  ]
+}

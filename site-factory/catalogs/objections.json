@@ -1,0 +1,29 @@
+{
+  "schema_version": "1.0.0",
+  "items": [
+    {
+      "id": "price",
+      "source_key": "too_expensive",
+      "strategy": "Explain verified scope and terms.",
+      "faq": "What is included?"
+    },
+    {
+      "id": "time",
+      "source_key": "no_time",
+      "strategy": "Explain actual steps and timing.",
+      "faq": "What time commitment is required?"
+    },
+    {
+      "id": "trust",
+      "source_key": "dont_trust_it",
+      "strategy": "Use verified evidence and transparent process.",
+      "faq": "What happens after I sign up?"
+    },
+    {
+      "id": "complexity",
+      "source_key": null,
+      "strategy": "Show concrete setup and support.",
+      "faq": "What does setup involve?"
+    }
+  ]
+}

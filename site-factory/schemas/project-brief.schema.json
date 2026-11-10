@@ -1,0 +1,199 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Project brief",
+  "description": "Versioned fictional or real project requirements, not a deployment configuration.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "name",
+    "fictional",
+    "project_type",
+    "template",
+    "audience",
+    "goal",
+    "style",
+    "layout",
+    "motion",
+    "capabilities",
+    "content_needs",
+    "deployment"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Project display name."
+    },
+    "fictional": {
+      "type": "boolean"
+    },
+    "project_type": {
+      "type": "string",
+      "enum": [
+        "static-site",
+        "landing-page",
+        "funnel",
+        "nextjs-app",
+        "directory",
+        "dashboard",
+        "api-oauth",
+        "embed-widget"
+      ]
+    },
+    "template": {
+      "enum": [
+        "static-site",
+        "single-file-html",
+        "landing-page",
+        "funnel",
+        "nextjs-app",
+        "directory",
+        "dashboard",
+        "api-oauth",
+        "embed-widget"
+      ]
+    },
+    "audience": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Intended audience."
+    },
+    "goal": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Primary conversion or user goal."
+    },
+    "style": {
+      "type": "string",
+      "enum": [
+        "conversion-clean",
+        "editorial-premium",
+        "industrial-bold",
+        "product-bento",
+        "mission-control",
+        "playful-launch",
+        "swiss-modernist",
+        "neo-noir",
+        "retro-futurist",
+        "warm-founder-led",
+        "organic-tactile",
+        "kinetic-typography",
+        "glass-and-light"
+      ]
+    },
+    "layout": {
+      "type": "string",
+      "enum": [
+        "conversion-stack",
+        "editorial-scroll",
+        "product-showcase",
+        "narrative-funnel",
+        "directory-grid",
+        "dashboard-shell",
+        "split-screen",
+        "immersive-canvas"
+      ]
+    },
+    "motion": {
+      "type": "string",
+      "enum": [
+        "none",
+        "subtle",
+        "expressive"
+      ]
+    },
+    "capabilities": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "seo",
+          "analytics",
+          "forms",
+          "auth",
+          "database",
+          "payments",
+          "email",
+          "api",
+          "oauth",
+          "embed",
+          "search",
+          "content"
+        ]
+      }
+    },
+    "content_needs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Content or asset needed."
+      }
+    },
+    "deployment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runtime",
+        "provider",
+        "assumptions"
+      ],
+      "properties": {
+        "runtime": {
+          "enum": [
+            "static",
+            "server",
+            "static-or-server"
+          ]
+        },
+        "provider": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Configurable provider or placeholder."
+        },
+        "assumptions": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Unverified deployment assumption."
+          }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "schema_version": "1.0.0",
+      "name": "Example",
+      "fictional": true,
+      "project_type": "landing-page",
+      "template": "landing-page",
+      "audience": "Small teams",
+      "goal": "Collect interest",
+      "style": "conversion-clean",
+      "layout": "conversion-stack",
+      "motion": "subtle",
+      "capabilities": [
+        "seo"
+      ],
+      "content_needs": [
+        "[Approved copy]"
+      ],
+      "deployment": {
+        "runtime": "static",
+        "provider": "[Choose provider]",
+        "assumptions": [
+          "A form endpoint must be configured."
+        ]
+      }
+    }
+  ]
+}
