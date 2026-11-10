@@ -11,6 +11,7 @@ Landing Page Generator is a custom GPT project for creating high-converting land
 - HTML templates and reusable components
 - Example landing pages
 - Documentation for setup, testing, deployment, and maintenance
+- A site-factory blueprint for evolving the project into reusable static sites, apps, embeds, APIs, and OAuth-enabled products
 
 ## Core GPT workflow
 
@@ -31,3 +32,7 @@ Landing Page Generator is a custom GPT project for creating high-converting land
 ## Repository structure
 
 See `/docs/getting-started.md` and `/docs/gpt-setup.md` for setup details.
+
+## Product expansion
+
+The current repository is the landing-page foundation of a broader launch system. See `/docs/site-factory-blueprint.md` for the recommended template architecture, reusable packages, design packs, generator design, and phased implementation plan. See `/docs/roadmap.md` for the prioritized backlog.
