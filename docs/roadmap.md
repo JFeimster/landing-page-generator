@@ -1,24 +1,26 @@
 # Roadmap
 
-## Current
+## Live now — v0.12.0
 
-- Plugin-native instructions and package layout.
-- 12 deterministic utility operations with HTTP compatibility routes and a local Streamable HTTP MCP adapter.
-- Existing templates, site-factory catalogs, examples, and 19 knowledge references.
+- Existing private Landing Page Generator plugin, updated in place (version 0.12.0).
+- 12 implemented deterministic utility operations through REST and production Streamable HTTP MCP.
+- Public companion website at the existing Vercel deployment: `/`, `/tools`, and `/factory`.
+- Working web workbench for `scoreCopy`, `generateCtaVariants`, `generateDesignTokens`, and `validateProof`.
+- Existing HTML templates, 19 plugin knowledge references, Site Factory schemas, catalogs, and example briefs.
 
-## Next
+## Next: executable Site Factory
 
-- Verify and document a real production service URL, authentication contract, and hosting-level rate limiting before adding portable MCP configuration.
-- Verify the plugin archive with Plugin Creator and update the existing plugin.
-- Prefer executable reuse of existing templates and utilities; add code generators only when they exist and have tests.
+1. Validate user project briefs against existing schemas and catalogs.
+2. Generate a deterministic single-file static landing page from approved input, with a preview and downloadable ZIP.
+3. Implement a second template and reusable style/design tokens with responsive and accessibility checks.
+4. Add opt-in connected GitHub/Vercel workflows for reviewed commits, preview builds, and separately authorized production deployment.
+5. Expand to Next.js, directories, embeds, dashboards, and provider adapters only after the above are reliable.
 
-## Future capabilities
-
-The site-factory catalogs and template documents describe static sites, funnels, directories, dashboards, APIs, embeds, and Next.js scaffolds. They are specifications and planning assets, not functioning generators. Prioritize executable components, integration tests, and maintained examples before claiming these capabilities.
+The `site-factory/` directory and the public `/factory` page are specifications/roadmap, **not** operational generation or publishing flows. See [factory plan](../site-factory/README.md).
 
 ## Non-goals
 
-- Creating a second GPT, plugin, repository, or standalone application.
-- Claiming conversion predictions from deterministic scores.
-- Claiming that a proof checker verifies truth.
-- Reorganizing or removing existing knowledge, templates, catalogs, or examples without evidence.
+- Creating a duplicate plugin, GPT, repository, or hosting project.
+- Renaming or removing the active MCP endpoint without coordinated migration.
+- Using copy scores as conversion forecasts or proof checks as truth verification.
+- Automatically creating/deploying customer projects from unapproved previews.
