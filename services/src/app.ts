@@ -39,3 +39,7 @@ export function createApp(options: { limit?: number; windowMs?: number } = {}) {
   app.use(errors);
   return app;
 }
+
+// Vercel detects this file as the Express entrypoint and requires a default app export.
+const app = createApp();
+export default app;
