@@ -1,31 +1,39 @@
-# Vercel deployment and MCP configuration
+# Production deployment and MCP connection
 
-## Verified deployment target
+## Current production configuration
 
-- **GitHub source:** `JFeimster/landing-page-generator` (production branch `main`)
+- **Source:** `JFeimster/landing-page-generator`, `main`
 - **Existing Vercel project:** `landing-page-generator-actions`
-- **Vercel project ID:** `prj_Yx96rCJG9W48jf1LmcTOXZN24Zvp`
-- **Canonical production domain:** `https://landing-page-generator-actions.vercel.app`
-- **HTTP health endpoint:** `/health`
-- **Streamable HTTP MCP endpoint:** `/mcp`
+- **Project ID:** `prj_Yx96rCJG9W48jf1LmcTOXZN24Zvp`
+- **Canonical URL:** https://landing-page-generator-actions.vercel.app
+- **Public website:** `/`, `/tools`, `/factory`
+- **Health check:** `GET /health`
+- **MCP:** `POST /mcp` using Streamable HTTP
+- **REST utilities:** Existing registry routes such as `POST /score-copy` and `POST /generate-cta-variants`
 
-The project was verified in Vercel on November 10, 2026. Its preview for plugin v0.12.0 built successfully. **A READY deployment alone does not prove live MCP discovery or tool invocation**; verify the production endpoint after merging and before distributing a plugin package.
+The website and MCP API run in the same Express service; `services/src/site.ts` registers the public GET pages without changing the existing MCP and action interfaces.
 
-## Host and authentication configuration
+Production v0.12.0 MCP was verified on November 10, 2026: initialization, discovery of all 12 tools, and a `scoreCopy` invocation succeeded. The **existing** ChatGPT plugin was updated in place to v0.12.0. Future changes to packaged skills or MCP configuration must be released separately from a website/service Git merge.
 
-The service uses an explicit host allowlist. When `MCP_ALLOWED_HOSTS` is unset, the verified Vercel production hostname and loopback development hosts are allowed. Set `MCP_ALLOWED_HOSTS` to a comma-separated list of exact hostnames if a different alias or deployment target is used. Its value must match the hostname clients actually call.
+## Publishing the website
 
-The current MCP and legacy HTTP utility routes do **not** authenticate requests. For plugin packaging, set `MCP_AUTH_TYPE=none` only after confirming the public production endpoint behaves accordingly. Do not invent OAuth or API-key configuration.
+Merge a tested pull request into `main` and confirm the existing Vercel Git integration deployed the **same commit SHA** to production. Check that `GET /` responds with HTML, `GET /tools` and `GET /factory` respond with HTML, and `GET /health` remains healthy. Test a tool request from the workbench and an independent MCP client. Monitor runtime errors.
 
-The existing in-memory request limiter is per instance rather than distributed. Configure suitable rate limiting and abuse controls at the hosting edge when warranted, particularly for public URL analysis and larger package responses. Keep URL/IP safety checks, request size caps, and timeouts enabled.
+The Vercel default hostname ends in `-actions` because the project originated as an API. A display name or custom domain can be added later, but a rename is not required to publish the website. **Do not break the canonical MCP address**: https://landing-page-generator-actions.vercel.app/mcp. If a new frontend hostname is introduced, preserve the old MCP URL and explicitly verify aliases, host allowlists and the plugin's connection metadata.
 
-## Release verification
+## Host and auth limitations
 
-1. Inspect the latest `main` production deployment in the existing Vercel project; confirm that it matches the merged commit and reports READY.
-2. Check that `GET /health` returns a successful response.
-3. Use an MCP-capable client to POST an `initialize` request to `https://landing-page-generator-actions.vercel.app/mcp`, then call `tools/list` and a harmless utility such as `scoreCopy`. `GET /mcp` may return 405 by design; that is not an MCP health test.
-4. Inspect runtime errors and verify that the host/origin checks do not reject the intended client.
-5. When verified, generate the plugin ZIP with `MCP_SERVER_URL=https://landing-page-generator-actions.vercel.app/mcp`, `MCP_AUTH_TYPE=none`, and `MCP_ALLOWED_HOSTS=landing-page-generator-actions.vercel.app`. These package-time values do not require deployment secrets.
-6. Update the **existing** Landing Page Generator plugin using the reviewed ZIP; do not create a second plugin.
+The MCP host allowlist defaults to `localhost`, `127.0.0.1`, and `landing-page-generator-actions.vercel.app`; `MCP_ALLOWED_HOSTS` overrides the list. A new hostname needs the corresponding allowlist value. Origin checks apply to MCP. The service currently has **no authentication**, and its rate limiter is per-instance memory rather than distributed. Configure appropriate hosting-edge rate limits before public workloads increase. URL analysis blocks private destinations, and the JSON body is bounded.
 
-See [plugin release process](plugin-release-process.md) and [MCP tools](mcp-tools.md).
+## Plugin release packaging
+
+Use only a verified HTTPS endpoint and observed authentication scheme:
+
+```powershell
+$env:MCP_SERVER_URL = "https://landing-page-generator-actions.vercel.app/mcp"
+$env:MCP_AUTH_TYPE = "none"
+$env:MCP_ALLOWED_HOSTS = "landing-page-generator-actions.vercel.app"
+npm --prefix services run package:plugin
+```
+
+Plugin Creator updates must target the existing backend ID `plugin_550e4f7010a081919a7f5030cb3ec822`, preserving identity and sharing settings. Follow [plugin release process](plugin-release-process.md), and never create a second plugin.
