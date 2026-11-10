@@ -1,0 +1,55 @@
+{
+  "schema_version": "1.0.0",
+  "items": [
+    {
+      "id": "saas",
+      "source_key": "saas",
+      "pain": "Unclear workflow",
+      "objections": [
+        "complexity",
+        "trust"
+      ],
+      "proof": "Approved product evidence"
+    },
+    {
+      "id": "agency",
+      "source_key": "agency",
+      "pain": "Unclear scope",
+      "objections": [
+        "price",
+        "trust"
+      ],
+      "proof": "Verified case study"
+    },
+    {
+      "id": "coaching",
+      "source_key": "coaching",
+      "pain": "Unclear support",
+      "objections": [
+        "time",
+        "trust"
+      ],
+      "proof": "Approved client feedback"
+    },
+    {
+      "id": "local-service",
+      "source_key": "local_service",
+      "pain": "Uncertain availability",
+      "objections": [
+        "price",
+        "trust"
+      ],
+      "proof": "Approved reviews and service area"
+    },
+    {
+      "id": "ecommerce",
+      "source_key": "ecommerce",
+      "pain": "Product fit uncertainty",
+      "objections": [
+        "price",
+        "trust"
+      ],
+      "proof": "Verified product details and return terms"
+    }
+  ]
+}

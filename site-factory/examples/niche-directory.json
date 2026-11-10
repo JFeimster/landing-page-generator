@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0.0",
+  "name": "[Niche directory]",
+  "fictional": true,
+  "project_type": "directory",
+  "template": "directory",
+  "audience": "People evaluating [category]",
+  "goal": "Find a relevant listing",
+  "style": "swiss-modernist",
+  "layout": "directory-grid",
+  "motion": "none",
+  "capabilities": [
+    "seo",
+    "search",
+    "content"
+  ],
+  "content_needs": [
+    "[Approved listings]",
+    "[Categories]"
+  ],
+  "deployment": {
+    "runtime": "static-or-server",
+    "provider": "[Choose deployment provider]",
+    "assumptions": [
+      "Decide whether listings are built or updated at request time."
+    ]
+  }
+}

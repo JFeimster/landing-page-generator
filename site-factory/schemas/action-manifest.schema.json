@@ -1,0 +1,92 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Action manifest",
+  "description": "One action catalog entry; inputs and outputs are intended until implemented.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "status",
+    "method",
+    "path",
+    "purpose",
+    "input",
+    "output",
+    "dependencies",
+    "validation",
+    "guide"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "status": {
+      "enum": [
+        "implemented",
+        "partial",
+        "placeholder",
+        "proposed"
+      ]
+    },
+    "method": {
+      "enum": [
+        "GET",
+        "POST"
+      ]
+    },
+    "path": {
+      "type": "string",
+      "pattern": "^/"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Purpose."
+    },
+    "input": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Intended input."
+    },
+    "output": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Intended output."
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "description": "Dependency."
+      }
+    },
+    "validation": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Validation requirements."
+    },
+    "guide": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Relative guide."
+    }
+  },
+  "examples": [
+    {
+      "id": "analyze-url",
+      "status": "placeholder",
+      "method": "POST",
+      "path": "/analyze-url",
+      "purpose": "positioning observations",
+      "input": "Public URL",
+      "output": "positioning observations",
+      "dependencies": [
+        "services/src/routes.ts"
+      ],
+      "validation": "Proposed: validate request, limits, safe errors, and response contract.",
+      "guide": "actions/public-url-analysis.md"
+    }
+  ]
+}

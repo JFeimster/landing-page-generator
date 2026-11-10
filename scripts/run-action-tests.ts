@@ -1,1 +1,10 @@
-console.log('TODO: Run Action service tests.');
+import { spawnSync } from 'node:child_process';
+import { readdirSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { resolve } from 'node:path';
+const root = fileURLToPath(new URL('..', import.meta.url));
+const tests = readdirSync(resolve(root,'tests/actions')).filter(f=>f.endsWith('.test.ts')).map(f=>resolve(root,'tests/actions',f));
+tests.push(resolve(root,'tests/funding-readiness-contract.test.js'));
+const result = spawnSync(process.execPath,['--import','tsx','--test',...tests],{cwd:resolve(root,'services'),stdio:'inherit'});
+if (result.error) throw result.error;
+process.exitCode = result.status ?? 1;

@@ -1,0 +1,252 @@
+{
+  "schema_version": "1.0.0",
+  "items": [
+    {
+      "id": "conversion-clean",
+      "name": "Conversion Clean",
+      "status": "proposed",
+      "best_for": [
+        "landing-page",
+        "funnel"
+      ],
+      "audience": "service buyers",
+      "typography": "humanist sans",
+      "color": "white, charcoal, one accent",
+      "layout": "conversion-stack",
+      "surfaces": "flat high-contrast surfaces",
+      "imagery": "real offer imagery",
+      "motion": "subtle",
+      "component": "sticky-cta",
+      "accessibility": "supports clear evaluation",
+      "avoid": "generic stock imagery; immersive campaign experiences"
+    },
+    {
+      "id": "editorial-premium",
+      "name": "Editorial Premium",
+      "status": "proposed",
+      "best_for": [
+        "landing-page",
+        "static-site"
+      ],
+      "audience": "high-ticket buyers",
+      "typography": "expressive serif with restrained sans",
+      "color": "cream, ink, muted metallic",
+      "layout": "editorial-scroll",
+      "surfaces": "paper-like restrained surfaces",
+      "imagery": "approved art-directed photography",
+      "motion": "subtle",
+      "component": "product-demo",
+      "accessibility": "maintain readable body size",
+      "avoid": "low contrast; dense dashboards"
+    },
+    {
+      "id": "industrial-bold",
+      "name": "Industrial Bold",
+      "status": "proposed",
+      "best_for": [
+        "landing-page",
+        "funnel"
+      ],
+      "audience": "challenger audiences",
+      "typography": "condensed sans and monospace labels",
+      "color": "warm white, black, safety accent",
+      "layout": "split-screen",
+      "surfaces": "sharp borders and exposed grid",
+      "imagery": "real product or mechanical detail",
+      "motion": "subtle",
+      "component": "process-timeline",
+      "accessibility": "preserve focus and whitespace",
+      "avoid": "all-caps walls; calming care pages"
+    },
+    {
+      "id": "product-bento",
+      "name": "Product Bento",
+      "status": "proposed",
+      "best_for": [
+        "landing-page",
+        "nextjs-app"
+      ],
+      "audience": "software evaluators",
+      "typography": "precise sans",
+      "color": "light neutral and single accent",
+      "layout": "product-showcase",
+      "surfaces": "modular varied cards",
+      "imagery": "approved product screens",
+      "motion": "subtle",
+      "component": "product-demo",
+      "accessibility": "preserve logical reading order",
+      "avoid": "identical cards; long editorial stories"
+    },
+    {
+      "id": "mission-control",
+      "name": "Mission Control",
+      "status": "proposed",
+      "best_for": [
+        "dashboard",
+        "nextjs-app"
+      ],
+      "audience": "operators and analysts",
+      "typography": "legible sans and tabular numerals",
+      "color": "slate, neutral, state colors",
+      "layout": "dashboard-shell",
+      "surfaces": "dense structured panels",
+      "imagery": "data visualizations with textual equivalents",
+      "motion": "none",
+      "component": "command-palette",
+      "accessibility": "avoid color-only status",
+      "avoid": "tiny text; emotional storytelling"
+    },
+    {
+      "id": "playful-launch",
+      "name": "Playful Launch",
+      "status": "proposed",
+      "best_for": [
+        "landing-page",
+        "funnel"
+      ],
+      "audience": "consumer and creator audiences",
+      "typography": "expressive rounded display with legible body",
+      "color": "bright controlled color blocks",
+      "layout": "narrative-funnel",
+      "surfaces": "rounded tactile surfaces",
+      "imagery": "licensed illustration or conceptual artwork",
+      "motion": "expressive",
+      "component": "animated-hero",
+      "accessibility": "keep motion optional and labels clear",
+      "avoid": "decorative overload; regulated enterprise flows"
+    },
+    {
+      "id": "swiss-modernist",
+      "name": "Swiss Modernist",
+      "status": "proposed",
+      "best_for": [
+        "static-site",
+        "landing-page"
+      ],
+      "audience": "professional audiences",
+      "typography": "grotesk sans",
+      "color": "black, white, restrained red",
+      "layout": "editorial-scroll",
+      "surfaces": "strict grid and asymmetry",
+      "imagery": "purposeful editorial image",
+      "motion": "subtle",
+      "component": "process-timeline",
+      "accessibility": "keep text hierarchy clear",
+      "avoid": "rigid small type; playful games"
+    },
+    {
+      "id": "neo-noir",
+      "name": "Neo-Noir",
+      "status": "proposed",
+      "best_for": [
+        "landing-page",
+        "nextjs-app"
+      ],
+      "audience": "technical audiences",
+      "typography": "geometric sans",
+      "color": "dark charcoal and bright accent",
+      "layout": "product-showcase",
+      "surfaces": "dark matte surfaces",
+      "imagery": "cinematic licensed imagery",
+      "motion": "subtle",
+      "component": "product-demo",
+      "accessibility": "check dark-mode contrast",
+      "avoid": "glare and neon overload; text-heavy government content"
+    },
+    {
+      "id": "retro-futurist",
+      "name": "Retro-Futurist",
+      "status": "proposed",
+      "best_for": [
+        "landing-page",
+        "static-site"
+      ],
+      "audience": "creative audiences",
+      "typography": "display sans with clear body",
+      "color": "chrome, dark ink, bold accent",
+      "layout": "immersive-canvas",
+      "surfaces": "geometric layered surfaces",
+      "imagery": "concept art clearly labeled",
+      "motion": "expressive",
+      "component": "animated-hero",
+      "accessibility": "provide static accessible version",
+      "avoid": "illegible scanlines; data-heavy tools"
+    },
+    {
+      "id": "warm-founder-led",
+      "name": "Warm Founder-Led",
+      "status": "proposed",
+      "best_for": [
+        "landing-page",
+        "funnel"
+      ],
+      "audience": "creator and service buyers",
+      "typography": "editorial serif and warm sans",
+      "color": "sand, dark brown, muted accent",
+      "layout": "editorial-scroll",
+      "surfaces": "soft paper surfaces",
+      "imagery": "approved founder imagery",
+      "motion": "subtle",
+      "component": "process-timeline",
+      "accessibility": "do not rely on handwriting for body",
+      "avoid": "invented biography; anonymous enterprise products"
+    },
+    {
+      "id": "organic-tactile",
+      "name": "Organic Tactile",
+      "status": "proposed",
+      "best_for": [
+        "static-site",
+        "landing-page"
+      ],
+      "audience": "wellness and food audiences",
+      "typography": "humanist serif and sans",
+      "color": "earth, cream, botanical",
+      "layout": "editorial-scroll",
+      "surfaces": "subtle natural texture",
+      "imagery": "licensed natural photography",
+      "motion": "subtle",
+      "component": "comparison-slider",
+      "accessibility": "ensure texture does not reduce contrast",
+      "avoid": "unverified health outcomes; operational dashboards"
+    },
+    {
+      "id": "kinetic-typography",
+      "name": "Kinetic Typography",
+      "status": "proposed",
+      "best_for": [
+        "landing-page",
+        "static-site"
+      ],
+      "audience": "event and campaign audiences",
+      "typography": "large display with readable sans",
+      "color": "high-contrast limited palette",
+      "layout": "immersive-canvas",
+      "surfaces": "type-led open canvas",
+      "imagery": "minimal supporting imagery",
+      "motion": "expressive",
+      "component": "animated-hero",
+      "accessibility": "show all text without animation",
+      "avoid": "motion-dependent content; dense documentation"
+    },
+    {
+      "id": "glass-and-light",
+      "name": "Glass and Light",
+      "status": "proposed",
+      "best_for": [
+        "nextjs-app",
+        "landing-page"
+      ],
+      "audience": "productivity and finance audiences",
+      "typography": "clean sans",
+      "color": "neutral translucent layers and accent",
+      "layout": "product-showcase",
+      "surfaces": "controlled translucent panels",
+      "imagery": "real interface screenshots",
+      "motion": "subtle",
+      "component": "product-demo",
+      "accessibility": "solid fallback behind text",
+      "avoid": "low contrast blur; low-power devices"
+    }
+  ]
+}

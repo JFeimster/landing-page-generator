@@ -1,0 +1,111 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Design pack",
+  "description": "Proposed semantic theme contract.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "name",
+    "tokens",
+    "motion"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Display name."
+    },
+    "tokens": {
+      "type": "object",
+      "required": [
+        "colors",
+        "typography",
+        "spacing"
+      ],
+      "properties": {
+        "colors": {
+          "type": "object",
+          "required": [
+            "text",
+            "surface",
+            "accent",
+            "on_accent",
+            "focus"
+          ],
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "typography": {
+          "type": "object",
+          "required": [
+            "display",
+            "body"
+          ],
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "spacing": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "string"
+          }
+        },
+        "radius": {
+          "type": "string"
+        },
+        "surfaces": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "motion": {
+      "type": "string",
+      "enum": [
+        "none",
+        "subtle",
+        "expressive"
+      ]
+    }
+  },
+  "examples": [
+    {
+      "schema_version": "1.0.0",
+      "id": "example",
+      "name": "Example",
+      "tokens": {
+        "colors": {
+          "text": "#111111",
+          "surface": "#ffffff",
+          "accent": "#004488",
+          "on_accent": "#ffffff",
+          "focus": "#bb4400"
+        },
+        "typography": {
+          "display": "Georgia, serif",
+          "body": "sans-serif"
+        },
+        "spacing": [
+          "4px",
+          "8px",
+          "16px"
+        ]
+      },
+      "motion": "subtle"
+    }
+  ]
+}

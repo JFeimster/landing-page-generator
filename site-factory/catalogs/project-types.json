@@ -1,0 +1,93 @@
+{
+  "schema_version": "1.0.0",
+  "items": [
+    {
+      "id": "static-site",
+      "templates": [
+        "static-site",
+        "single-file-html"
+      ],
+      "default_capabilities": [
+        "seo",
+        "content"
+      ],
+      "runtime": "static"
+    },
+    {
+      "id": "landing-page",
+      "templates": [
+        "landing-page",
+        "single-file-html"
+      ],
+      "default_capabilities": [
+        "seo",
+        "content"
+      ],
+      "runtime": "static"
+    },
+    {
+      "id": "funnel",
+      "templates": [
+        "funnel"
+      ],
+      "default_capabilities": [
+        "seo",
+        "forms"
+      ],
+      "runtime": "static-or-server"
+    },
+    {
+      "id": "nextjs-app",
+      "templates": [
+        "nextjs-app"
+      ],
+      "default_capabilities": [
+        "auth",
+        "database"
+      ],
+      "runtime": "server"
+    },
+    {
+      "id": "directory",
+      "templates": [
+        "directory"
+      ],
+      "default_capabilities": [
+        "search",
+        "content"
+      ],
+      "runtime": "static-or-server"
+    },
+    {
+      "id": "dashboard",
+      "templates": [
+        "dashboard"
+      ],
+      "default_capabilities": [
+        "auth",
+        "database"
+      ],
+      "runtime": "server"
+    },
+    {
+      "id": "api-oauth",
+      "templates": [
+        "api-oauth"
+      ],
+      "default_capabilities": [
+        "api"
+      ],
+      "runtime": "server"
+    },
+    {
+      "id": "embed-widget",
+      "templates": [
+        "embed-widget"
+      ],
+      "default_capabilities": [
+        "embed"
+      ],
+      "runtime": "static-or-server"
+    }
+  ]
+}

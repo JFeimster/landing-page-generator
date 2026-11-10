@@ -1,1 +1,2 @@
-console.log('TODO: Validate JSON data files.');
+import { validateJsonData } from '../services/src/maintenance.js';
+validateJsonData();

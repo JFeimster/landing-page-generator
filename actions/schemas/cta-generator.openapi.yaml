@@ -1,8 +1,121 @@
 openapi: 3.1.0
 info:
-  title: cta-generator
-  version: 0.1.0
-  description: Placeholder OpenAPI schema for cta-generator.
+  title: Landing Page Generator Actions
+  version: 1.0.0
+  description: Deterministic no-auth utilities. Configure the server URL before importing.
 servers:
   - url: https://example.com
-paths: {}
+security: []
+paths:
+  /generate-cta-variants:
+    post:
+      operationId: generateCtaVariants
+      summary: Generate action labels for the selected goal and tone.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                offer:
+                  type: string
+                  minLength: 1
+                  maxLength: 500
+                audience:
+                  type: string
+                  minLength: 1
+                  maxLength: 500
+                tone:
+                  type: string
+                  enum:
+                    - friendly
+                    - premium
+                    - bold
+                    - technical
+                    - calm
+                goal:
+                  type: string
+                  enum:
+                    - learn
+                    - book
+                    - buy
+                    - waitlist
+              required:
+                - offer
+                - audience
+              additionalProperties: false
+      responses:
+        "200":
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: &a1
+                type: object
+                required:
+                  - status
+                  - error
+                properties:
+                  status:
+                    const: error
+                  error:
+                    type: object
+                    required:
+                      - code
+                      - message
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1

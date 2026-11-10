@@ -1,1 +1,2 @@
-console.log('TODO: Build combined OpenAPI schema from individual schemas.');
+import { generateSchemas } from '../services/src/maintenance.js';
+generateSchemas();

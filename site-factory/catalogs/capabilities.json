@@ -1,0 +1,82 @@
+{
+  "schema_version": "1.0.0",
+  "items": [
+    {
+      "id": "seo",
+      "status": "proposed",
+      "description": "Metadata and indexable content",
+      "requires": []
+    },
+    {
+      "id": "analytics",
+      "status": "proposed",
+      "description": "Consent-aware event adapter",
+      "requires": []
+    },
+    {
+      "id": "forms",
+      "status": "proposed",
+      "description": "Validated submission through configured endpoint",
+      "requires": []
+    },
+    {
+      "id": "auth",
+      "status": "proposed",
+      "description": "Session and authorization",
+      "requires": []
+    },
+    {
+      "id": "database",
+      "status": "proposed",
+      "description": "Persistent storage and migrations",
+      "requires": []
+    },
+    {
+      "id": "payments",
+      "status": "proposed",
+      "description": "Configured checkout and webhooks",
+      "requires": [
+        "api"
+      ]
+    },
+    {
+      "id": "email",
+      "status": "proposed",
+      "description": "Transactional messaging",
+      "requires": []
+    },
+    {
+      "id": "api",
+      "status": "proposed",
+      "description": "Request-aware API",
+      "requires": []
+    },
+    {
+      "id": "oauth",
+      "status": "proposed",
+      "description": "Delegated authorization",
+      "requires": [
+        "auth",
+        "api"
+      ]
+    },
+    {
+      "id": "embed",
+      "status": "proposed",
+      "description": "Host-page integration",
+      "requires": []
+    },
+    {
+      "id": "search",
+      "status": "proposed",
+      "description": "Listing search and filters",
+      "requires": []
+    },
+    {
+      "id": "content",
+      "status": "proposed",
+      "description": "Typed editorial content",
+      "requires": []
+    }
+  ]
+}

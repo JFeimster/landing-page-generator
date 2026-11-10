@@ -1,8 +1,105 @@
 openapi: 3.1.0
 info:
-  title: competitor-comparison
-  version: 0.1.0
-  description: Placeholder OpenAPI schema for competitor-comparison.
+  title: Landing Page Generator Actions
+  version: 1.0.0
+  description: Deterministic no-auth utilities. Configure the server URL before importing.
 servers:
   - url: https://example.com
-paths: {}
+security: []
+paths:
+  /compare-competitors:
+    post:
+      operationId: compareCompetitors
+      summary: Compare observations from up to three public URLs.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                urls:
+                  minItems: 1
+                  maxItems: 3
+                  type: array
+                  items:
+                    type: string
+                    maxLength: 2048
+                    format: uri
+              required:
+                - urls
+              additionalProperties: false
+      responses:
+        "200":
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: &a1
+                type: object
+                required:
+                  - status
+                  - error
+                properties:
+                  status:
+                    const: error
+                  error:
+                    type: object
+                    required:
+                      - code
+                      - message
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1

@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0.0",
+  "items": [
+    {
+      "id": "analyze-url",
+      "status": "placeholder",
+      "method": "POST",
+      "path": "/analyze-url",
+      "purpose": "positioning observations",
+      "input": "Public URL",
+      "output": "positioning observations",
+      "dependencies": [
+        "services/src/routes.ts"
+      ],
+      "validation": "Proposed: validate request, limits, safe errors, and response contract.",
+      "guide": "actions/public-url-analysis.md"
+    },
+    {
+      "id": "compare-competitors",
+      "status": "placeholder",
+      "method": "POST",
+      "path": "/compare-competitors",
+      "purpose": "observed comparison",
+      "input": "Public URLs",
+      "output": "observed comparison",
+      "dependencies": [
+        "services/src/routes.ts"
+      ],
+      "validation": "Proposed: validate request, limits, safe errors, and response contract.",
+      "guide": "actions/public-url-analysis.md"
+    },
+    {
+      "id": "audit-html",
+      "status": "placeholder",
+      "method": "POST",
+      "path": "/audit-html",
+      "purpose": "quality findings",
+      "input": "HTML",
+      "output": "quality findings",
+      "dependencies": [
+        "services/src/routes.ts"
+      ],
+      "validation": "Proposed: validate request, limits, safe errors, and response contract.",
+      "guide": "actions/validation-and-scoring.md"
+    },
+    {
+      "id": "score-copy",
+      "status": "placeholder",
+      "method": "POST",
+      "path": "/score-copy",
+      "purpose": "copy findings",
+      "input": "Copy and context",
+      "output": "copy findings",
+      "dependencies": [
+        "services/src/routes.ts"
+      ],
+      "validation": "Proposed: validate request, limits, safe errors, and response contract.",
+      "guide": "actions/validation-and-scoring.md"
+    },
+    {
+      "id": "validate-proof",
+      "status": "placeholder",
+      "method": "POST",
+      "path": "/validate-proof",
+      "purpose": "claim flags",
+      "input": "Copy and evidence",
+      "output": "claim flags",
+      "dependencies": [
+        "services/src/routes.ts"
+      ],
+      "validation": "Proposed: validate request, limits, safe errors, and response contract.",
+      "guide": "actions/validation-and-scoring.md"
+    },
+    {
+      "id": "build-offer-stack",
+      "status": "placeholder",
+      "method": "POST",
+      "path": "/build-offer-stack",
+      "purpose": "offer stack",
+      "input": "Offer details",
+      "output": "offer stack",
+      "dependencies": [
+        "services/src/routes.ts"
+      ],
+      "validation": "Proposed: validate request, limits, safe errors, and response contract.",
+      "guide": "actions/generation-and-export.md"
+    },
+    {
+      "id": "generate-faqs",
+      "status": "placeholder",
+      "method": "POST",
+      "path": "/generate-faqs",
+      "purpose": "FAQ candidates",
+      "input": "Offer and objections",
+      "output": "FAQ candidates",
+      "dependencies": [
+        "services/src/routes.ts"
+      ],
+      "validation": "Proposed: validate request, limits, safe errors, and response contract.",
+      "guide": "actions/generation-and-export.md"
+    },
+    {
+      "id": "generate-cta-variants",
+      "status": "placeholder",
+      "method": "POST",
+      "path": "/generate-cta-variants",
+      "purpose": "CTA variants",
+      "input": "Audience and goal",
+      "output": "CTA variants",
+      "dependencies": [
+        "services/src/routes.ts"
+      ],
+      "validation": "Proposed: validate request, limits, safe errors, and response contract.",
+      "guide": "actions/generation-and-export.md"
+    },
+    {
+      "id": "generate-design-tokens",
+      "status": "placeholder",
+      "method": "POST",
+      "path": "/generate-design-tokens",
+      "purpose": "token suggestions",
+      "input": "Brand direction",
+      "output": "token suggestions",
+      "dependencies": [
+        "services/src/routes.ts"
+      ],
+      "validation": "Proposed: validate request, limits, safe errors, and response contract.",
+      "guide": "actions/generation-and-export.md"
+    },
+    {
+      "id": "generate-image-briefs",
+      "status": "placeholder",
+      "method": "POST",
+      "path": "/generate-image-briefs",
+      "purpose": "visual briefs",
+      "input": "Page sections",
+      "output": "visual briefs",
+      "dependencies": [
+        "services/src/routes.ts"
+      ],
+      "validation": "Proposed: validate request, limits, safe errors, and response contract.",
+      "guide": "actions/generation-and-export.md"
+    },
+    {
+      "id": "map-input-to-sections",
+      "status": "placeholder",
+      "method": "POST",
+      "path": "/map-input-to-sections",
+      "purpose": "section mapping",
+      "input": "Intake",
+      "output": "section mapping",
+      "dependencies": [
+        "services/src/routes.ts"
+      ],
+      "validation": "Proposed: validate request, limits, safe errors, and response contract.",
+      "guide": "actions/generation-and-export.md"
+    },
+    {
+      "id": "package-landing-page",
+      "status": "placeholder",
+      "method": "POST",
+      "path": "/package-landing-page",
+      "purpose": "package manifest",
+      "input": "Content and assets",
+      "output": "package manifest",
+      "dependencies": [
+        "services/src/routes.ts"
+      ],
+      "validation": "Proposed: validate request, limits, safe errors, and response contract.",
+      "guide": "actions/generation-and-export.md"
+    }
+  ]
+}

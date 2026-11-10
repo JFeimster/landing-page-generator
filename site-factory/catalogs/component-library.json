@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0.0",
+  "items": [
+    {
+      "id": "animated-hero",
+      "description": "Content-first headline reveal",
+      "status": "proposed",
+      "reduced_motion": "Use an immediate static state and preserve keyboard interaction."
+    },
+    {
+      "id": "product-demo",
+      "description": "User-controlled product preview",
+      "status": "proposed",
+      "reduced_motion": "Use an immediate static state and preserve keyboard interaction."
+    },
+    {
+      "id": "comparison-slider",
+      "description": "Keyboard-operable before/after comparison",
+      "status": "proposed",
+      "reduced_motion": "Use an immediate static state and preserve keyboard interaction."
+    },
+    {
+      "id": "process-timeline",
+      "description": "Ordered process steps",
+      "status": "proposed",
+      "reduced_motion": "Use an immediate static state and preserve keyboard interaction."
+    },
+    {
+      "id": "sticky-cta",
+      "description": "Context-aware CTA with in-flow fallback",
+      "status": "proposed",
+      "reduced_motion": "Use an immediate static state and preserve keyboard interaction."
+    },
+    {
+      "id": "pricing-toggle",
+      "description": "Switch supplied billing options",
+      "status": "proposed",
+      "reduced_motion": "Use an immediate static state and preserve keyboard interaction."
+    },
+    {
+      "id": "calculator",
+      "description": "Validated inputs and transparent calculation",
+      "status": "proposed",
+      "reduced_motion": "Use an immediate static state and preserve keyboard interaction."
+    },
+    {
+      "id": "command-palette",
+      "description": "Keyboard accessible commands",
+      "status": "proposed",
+      "reduced_motion": "Use an immediate static state and preserve keyboard interaction."
+    },
+    {
+      "id": "embedded-widget",
+      "description": "Host-page mini-tool",
+      "status": "proposed",
+      "reduced_motion": "Use an immediate static state and preserve keyboard interaction."
+    }
+  ]
+}

@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Template manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "version",
+    "status",
+    "project_types",
+    "required_capabilities",
+    "optional_capabilities",
+    "runtime",
+    "entrypoint"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "status": {
+      "enum": [
+        "proposed",
+        "placeholder",
+        "partial",
+        "implemented"
+      ]
+    },
+    "project_types": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "static-site",
+          "landing-page",
+          "funnel",
+          "nextjs-app",
+          "directory",
+          "dashboard",
+          "api-oauth",
+          "embed-widget"
+        ]
+      }
+    },
+    "required_capabilities": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "seo",
+          "analytics",
+          "forms",
+          "auth",
+          "database",
+          "payments",
+          "email",
+          "api",
+          "oauth",
+          "embed",
+          "search",
+          "content"
+        ]
+      }
+    },
+    "optional_capabilities": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "seo",
+          "analytics",
+          "forms",
+          "auth",
+          "database",
+          "payments",
+          "email",
+          "api",
+          "oauth",
+          "embed",
+          "search",
+          "content"
+        ]
+      }
+    },
+    "runtime": {
+      "enum": [
+        "static",
+        "server",
+        "static-or-server"
+      ]
+    },
+    "entrypoint": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Relative template path."
+    }
+  },
+  "examples": [
+    {
+      "schema_version": "1.0.0",
+      "id": "landing-page",
+      "version": "1.0.0",
+      "status": "proposed",
+      "project_types": [
+        "landing-page"
+      ],
+      "required_capabilities": [
+        "seo"
+      ],
+      "optional_capabilities": [
+        "forms"
+      ],
+      "runtime": "static",
+      "entrypoint": "templates/landing-page"
+    }
+  ]
+}

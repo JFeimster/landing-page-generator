@@ -10,6 +10,7 @@
 
 ## Product and quality
 
+- [Site factory specification library](../site-factory/README.md): proposed templates, catalogs, schemas, and examples.
 - `site-factory-blueprint.md`: evolve this landing-page system into a reusable launch factory.
 - `roadmap.md`: prioritized implementation plan.
 - `testing.md`: current verification coverage and recommended additions.

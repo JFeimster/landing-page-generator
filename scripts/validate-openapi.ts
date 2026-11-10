@@ -1,1 +1,2 @@
-console.log('TODO: Validate OpenAPI schemas.');
+import { validateOpenApi } from '../services/src/maintenance.js';
+validateOpenApi();

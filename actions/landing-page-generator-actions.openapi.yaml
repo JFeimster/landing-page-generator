@@ -1,283 +1,1098 @@
 openapi: 3.1.0
 info:
   title: Landing Page Generator Actions
-  version: 0.1.0
-  description: No-authentication utility actions for Landing Page Generator.
+  version: 1.0.0
+  description: Deterministic no-auth utilities. Configure the server URL before importing.
 servers:
   - url: https://example.com
-    description: Replace with your deployed Action service URL.
+security: []
 paths:
   /analyze-url:
     post:
       operationId: analyzeUrl
-      summary: Analyze a public website URL for positioning and landing page signals.
+      summary: Extract observed positioning signals from public static HTML.
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [url]
               properties:
                 url:
                   type: string
-                  description: Public URL to analyze.
+                  maxLength: 2048
+                  format: uri
+              required:
+                - url
+              additionalProperties: false
       responses:
         "200":
-          description: Positioning analysis result.
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
           content:
             application/json:
               schema:
                 type: object
-
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: &a1
+                type: object
+                required:
+                  - status
+                  - error
+                properties:
+                  status:
+                    const: error
+                  error:
+                    type: object
+                    required:
+                      - code
+                      - message
+                    properties:
+                      code:
+                        type: string
+                      message:
+                        type: string
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
   /audit-html:
     post:
       operationId: auditHtml
-      summary: Audit generated landing page HTML.
+      summary: Check HTML structure, metadata, labels and CTA destinations.
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [html]
               properties:
                 html:
                   type: string
+                  minLength: 1
+                  maxLength: 300000
+              required:
+                - html
+              additionalProperties: false
       responses:
         "200":
-          description: HTML audit report.
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
           content:
             application/json:
               schema:
                 type: object
-
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
   /score-copy:
     post:
       operationId: scoreCopy
-      summary: Score landing page copy for conversion quality.
+      summary: Score deterministic writing signals, not predicted conversions.
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [copy]
               properties:
                 copy:
                   type: string
+                  minLength: 1
+                  maxLength: 30000
+              required:
+                - copy
+              additionalProperties: false
       responses:
         "200":
-          description: Copy scorecard.
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
           content:
             application/json:
               schema:
                 type: object
-
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
   /validate-proof:
     post:
       operationId: validateProof
-      summary: Detect unsupported claims and fabricated proof.
+      summary: Flag claims needing evidence; cannot establish truth.
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [copy]
               properties:
                 copy:
                   type: string
+                  minLength: 1
+                  maxLength: 30000
+                evidence:
+                  maxItems: 30
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      claim:
+                        type: string
+                        minLength: 1
+                        maxLength: 500
+                      source:
+                        type: string
+                        minLength: 1
+                        maxLength: 500
+                    required:
+                      - claim
+                      - source
+                    additionalProperties: false
+              required:
+                - copy
+              additionalProperties: false
       responses:
         "200":
-          description: Proof validation result.
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
           content:
             application/json:
               schema:
                 type: object
-
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
   /build-offer-stack:
     post:
       operationId: buildOfferStack
-      summary: Build a structured landing page offer stack.
+      summary: Organize supplied offer details without inventing prices or terms.
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [offer_notes]
               properties:
                 offer_notes:
                   type: string
+                  minLength: 1
+                  maxLength: 30000
+                deliverables:
+                  maxItems: 30
+                  type: array
+                  items:
+                    type: string
+                    minLength: 1
+                    maxLength: 500
+                bonuses:
+                  maxItems: 30
+                  type: array
+                  items:
+                    type: string
+                    minLength: 1
+                    maxLength: 500
+                price:
+                  type: string
+                  minLength: 1
+                  maxLength: 500
+                guarantee:
+                  type: string
+                  minLength: 1
+                  maxLength: 500
+                payment_options:
+                  maxItems: 30
+                  type: array
+                  items:
+                    type: string
+                    minLength: 1
+                    maxLength: 500
+              required:
+                - offer_notes
+              additionalProperties: false
       responses:
         "200":
-          description: Offer stack.
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
           content:
             application/json:
               schema:
                 type: object
-
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
   /generate-faqs:
     post:
       operationId: generateFaqs
-      summary: Generate FAQs from product, audience, and objections.
+      summary: Draft FAQ questions with supplied answers or missing-information labels.
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [product_notes]
               properties:
                 product_notes:
                   type: string
+                  minLength: 1
+                  maxLength: 30000
                 objections:
+                  maxItems: 30
                   type: array
                   items:
                     type: string
+                    minLength: 1
+                    maxLength: 500
+                facts:
+                  type: object
+                  properties:
+                    price:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                    timeline:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                    support:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                    refund_policy:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                  additionalProperties: false
+              required:
+                - product_notes
+              additionalProperties: false
       responses:
         "200":
-          description: FAQ list.
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
           content:
             application/json:
               schema:
                 type: object
-
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
   /generate-cta-variants:
     post:
       operationId: generateCtaVariants
-      summary: Generate CTA copy variants.
+      summary: Generate action labels for the selected goal and tone.
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [offer, audience]
               properties:
                 offer:
                   type: string
+                  minLength: 1
+                  maxLength: 500
                 audience:
                   type: string
+                  minLength: 1
+                  maxLength: 500
                 tone:
                   type: string
+                  enum:
+                    - friendly
+                    - premium
+                    - bold
+                    - technical
+                    - calm
+                goal:
+                  type: string
+                  enum:
+                    - learn
+                    - book
+                    - buy
+                    - waitlist
+              required:
+                - offer
+                - audience
+              additionalProperties: false
       responses:
         "200":
-          description: CTA variants.
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
           content:
             application/json:
               schema:
                 type: object
-
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
   /generate-design-tokens:
     post:
       operationId: generateDesignTokens
-      summary: Generate design tokens for a landing page.
+      summary: Select a palette and calculate solid-color contrast.
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [brand_notes]
               properties:
                 brand_notes:
                   type: string
+                  minLength: 1
+                  maxLength: 30000
+                accent:
+                  type: string
+                  pattern: ^#[0-9a-f]{6}$
+                style:
+                  type: string
+                  enum:
+                    - conversion-clean
+                    - editorial-premium
+                    - industrial-bold
+                    - product-bento
+                    - mission-control
+                    - playful-launch
+              required:
+                - brand_notes
+              additionalProperties: false
       responses:
         "200":
-          description: Design tokens.
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
           content:
             application/json:
               schema:
                 type: object
-
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
   /generate-image-briefs:
     post:
       operationId: generateImageBriefs
-      summary: Generate visual asset briefs for a landing page.
+      summary: Build specific asset handoff briefs.
       requestBody:
         required: true
         content:
           application/json:
             schema:
               type: object
-              required: [landing_page_notes]
               properties:
                 landing_page_notes:
                   type: string
-      responses:
-        "200":
-          description: Image briefs.
-          content:
-            application/json:
-              schema:
-                type: object
-
-  /map-input-to-sections:
-    post:
-      operationId: mapInputToSections
-      summary: Map raw user notes into landing page sections.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [raw_notes]
-              properties:
-                raw_notes:
-                  type: string
-      responses:
-        "200":
-          description: Section map.
-          content:
-            application/json:
-              schema:
-                type: object
-
-  /package-landing-page:
-    post:
-      operationId: packageLandingPage
-      summary: Package landing page HTML into a project structure.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [html]
-              properties:
-                html:
-                  type: string
-      responses:
-        "200":
-          description: Package manifest or downloadable package metadata.
-          content:
-            application/json:
-              schema:
-                type: object
-
-  /compare-competitors:
-    post:
-      operationId: compareCompetitors
-      summary: Compare public competitor landing pages.
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              required: [urls]
-              properties:
-                urls:
+                  minLength: 1
+                  maxLength: 30000
+                asset_types:
+                  minItems: 1
+                  maxItems: 6
                   type: array
                   items:
                     type: string
+                    enum:
+                      - hero
+                      - screenshot
+                      - founder
+                      - logo
+                      - process
+                      - social
+              required:
+                - landing_page_notes
+              additionalProperties: false
       responses:
         "200":
-          description: Competitor comparison.
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
           content:
             application/json:
               schema:
                 type: object
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+  /map-input-to-sections:
+    post:
+      operationId: mapInputToSections
+      summary: Map approved structured fields to page sections.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                raw_notes:
+                  type: string
+                  minLength: 1
+                  maxLength: 30000
+                fields:
+                  type: object
+                  properties:
+                    offer:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                    audience:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                    problem:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                    mechanism:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                    features:
+                      maxItems: 30
+                      type: array
+                      items:
+                        type: string
+                        minLength: 1
+                        maxLength: 500
+                    proof:
+                      maxItems: 30
+                      type: array
+                      items:
+                        type: string
+                        minLength: 1
+                        maxLength: 500
+                    price:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                    cta:
+                      type: string
+                      minLength: 1
+                      maxLength: 500
+                  additionalProperties: false
+              required:
+                - raw_notes
+              additionalProperties: false
+      responses:
+        "200":
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+  /package-landing-page:
+    post:
+      operationId: packageLandingPage
+      summary: Return a base64 ZIP with HTML, optional copy and audit report.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                html:
+                  type: string
+                  minLength: 1
+                  maxLength: 300000
+                copy:
+                  type: string
+                  minLength: 1
+                  maxLength: 30000
+                project_name:
+                  type: string
+                  pattern: ^[a-z0-9][a-z0-9-]{0,49}$
+              required:
+                - html
+              additionalProperties: false
+      responses:
+        "200":
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+  /compare-competitors:
+    post:
+      operationId: compareCompetitors
+      summary: Compare observations from up to three public URLs.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                urls:
+                  minItems: 1
+                  maxItems: 3
+                  type: array
+                  items:
+                    type: string
+                    maxLength: 2048
+                    format: uri
+              required:
+                - urls
+              additionalProperties: false
+      responses:
+        "200":
+          description: Result; fields are action-specific. No independent claim
+            verification is implied.
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - status
+                  - data
+                properties:
+                  status:
+                    const: ok
+                  data:
+                    type: object
+                    additionalProperties: true
+        "400":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "413":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "422":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "429":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "500":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "502":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "503":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
+        "504":
+          description: Structured error.
+          content:
+            application/json:
+              schema: *a1
