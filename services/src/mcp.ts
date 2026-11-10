@@ -31,7 +31,8 @@ export async function handleMcpRequest(req: Request, res: Response) {
     return;
   }
   const hostHeader = req.get('host')?.toLowerCase();
-  const allowedHosts = (process.env.MCP_ALLOWED_HOSTS ?? 'localhost,127.0.0.1').split(',').map(host => host.trim().toLowerCase()).filter(Boolean);
+  // The existing production project has a verified canonical hostname; MCP_ALLOWED_HOSTS can override it for other deployments.
+  const allowedHosts = (process.env.MCP_ALLOWED_HOSTS ?? 'localhost,127.0.0.1,landing-page-generator-actions.vercel.app').split(',').map(host => host.trim().toLowerCase()).filter(Boolean);
   let hostname = '';
   try { hostname = new URL(`http://${hostHeader ?? ''}`).hostname.toLowerCase(); } catch { /* rejected below */ }
   if (!hostHeader || !allowedHosts.some(host => host === hostHeader || host === hostname)) {
