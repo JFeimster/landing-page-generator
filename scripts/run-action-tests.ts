@@ -5,6 +5,7 @@ import { resolve } from 'node:path';
 const root = fileURLToPath(new URL('..', import.meta.url));
 const tests = readdirSync(resolve(root,'tests/actions')).filter(f=>f.endsWith('.test.ts')).map(f=>resolve(root,'tests/actions',f));
 tests.push(resolve(root,'tests/funding-readiness-contract.test.js'));
+tests.push(resolve(root,'services/tests/mcp.test.ts'));
 const result = spawnSync(process.execPath,['--import','tsx','--test',...tests],{cwd:resolve(root,'services'),stdio:'inherit'});
 if (result.error) throw result.error;
 process.exitCode = result.status ?? 1;

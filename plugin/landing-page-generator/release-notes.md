@@ -1,5 +1,12 @@
 # Landing Page Generator release notes
 
+## 0.12.0
+
+- Modernized the primary skill for create, audit, rewrite, code, variants, and design workflows without mandatory continuation checkpoints.
+- Added a Streamable HTTP MCP adapter for the existing 12 utility operations. Existing HTTP routes remain available.
+- Clarified plugin architecture, tool boundaries, installation, migration, and release checks.
+- The remote server URL and authentication/deployment configuration remain unverified; no portable `mcp.json` is included in this candidate.
+
 ## 0.11.0
 
 - Added a portable Agent Plugins 1.0 manifest while retaining the legacy Codex compatibility manifest.

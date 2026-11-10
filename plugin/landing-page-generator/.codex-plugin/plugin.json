@@ -22,5 +22,5 @@
   },
   "name": "gpt-7ae4dc668705b6719ce1d8e858f4facd",
   "skills": "./skills/",
-  "version": "0.11.0"
+  "version": "0.12.0"
 }

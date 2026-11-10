@@ -1,28 +1,7 @@
-# GPT Actions
+# HTTP and OpenAPI compatibility
 
-This folder contains OpenAPI schemas for optional no-authentication GPT Actions.
+MCP at `/mcp` is the primary service tool interface. This directory contains generated OpenAPI compatibility contracts for clients that need direct HTTP operations. Runtime behavior and request schemas are owned by `services/src/registry.ts`, `services/src/schemas.ts`, and the existing functions under `services/src/actions/`.
 
-## Recommended setup
+The combined contract lists all 12 operations. Existing endpoints are `POST /analyze-url`, `/audit-html`, `/score-copy`, `/validate-proof`, `/build-offer-stack`, `/generate-faqs`, `/generate-cta-variants`, `/generate-design-tokens`, `/generate-image-briefs`, `/map-input-to-sections`, `/package-landing-page`, and `/compare-competitors`.
 
-1. Open GPT Builder.
-2. Go to Configure.
-3. Go to Actions.
-4. Create a new Action.
-5. Set Authentication to None.
-6. Paste or import `landing-page-generator-actions.openapi.yaml`.
-7. Test each endpoint.
-
-## Included action ideas
-
-- Website Positioning Extractor
-- Landing Page HTML QA Checker
-- Conversion Copy Scorecard
-- Placeholder Proof Validator
-- Offer Stack Builder
-- FAQ and Objection Generator
-- CTA Variant Generator
-- Design Token Generator
-- Image Brief Generator
-- Landing Page Section Mapper
-- Simple Landing Page Export Packager
-- Competitor Page Comparison
+Regenerate with `npm --prefix services run schemas`, then validate with `npm --prefix services run validate`. Server URLs default to a placeholder and are not production endpoints. OpenAPI is a compatibility interface, not the plugin installation workflow.

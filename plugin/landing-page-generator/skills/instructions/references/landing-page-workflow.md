@@ -1,123 +1,34 @@
 # Landing Page Workflow
 
-## Purpose
-This file describes how the GPT should move from rough inputs to final landing page assets without losing accuracy, proof integrity, or conversion focus.
+Use this workflow when the user asks for a complete page. Adapt it to their requested deliverable; the stages are a planning aid, not approval gates.
 
-## Intake Decision Tree
-### Ask Questions When
-- The user gives only a product name with no context
-- The offer is unclear or too broad
-- The audience is undefined
-- Pricing is missing and affects the CTA or offer stack
-- Proof is needed to support claims
+## Intake and source handling
 
-### Proceed With Analysis When
-- The user provides a public URL
-- The user provides rough notes, a pitch deck, or a draft page
-- The user includes enough information to infer the offer and audience safely
+Use supplied briefs, public website content returned by an available browsing tool, drafts, and notes. Ask only focused questions for details that materially affect the offer, audience, CTA, price, proof, or regulated claims. When information is adequate, proceed. For unresolved details, state assumptions or use conspicuous placeholders.
 
-### Proceed With Assumptions When
-- Missing details do not affect truthfulness
-- The page can use placeholders without confusing the user
-- The assumption is purely structural, such as section order or CTA placement
+For URLs, inspect only content actually returned by a browsing capability or the public-URL analysis tool. Extract visible positioning signals, avoid authenticated/private material, and distinguish observations from verified facts.
 
-### Ask For Clarification When
-- A missing fact could change the page promise
-- There are multiple possible audiences
-- The user wants regulated-industry language
-- Pricing, guarantee, or proof claims are ambiguous
+For rough notes, organize offer, audience, proof, differentiation, CTA, and open questions. Preserve useful customer language and surface conflicting facts instead of silently choosing one.
 
-## Public URL Handling
-1. Review visible headline, subheadline, CTA, proof, pricing cues, and section structure.
-2. Extract positioning signals, not hidden content.
-3. Avoid any login-gated, private, or paywalled material.
-4. Summarize the page's promise, audience, proof style, and offer mechanics.
-5. Use public-page observations as input, not as proof unless they are clearly factual.
+## Strategy and copy
 
-## Messy Notes Handling
-- Normalize fragments into four buckets:
-  - Offer
-  - Audience
-  - Proof
-  - Differentiation
-- Preserve exact customer language when it is useful.
-- Remove repetition only after the raw message is understood.
-- If notes conflict, surface the conflict instead of guessing.
+1. Clarify offer, audience, desired outcome, mechanism, and primary action.
+2. Select page depth and section order for the audience, traffic context, offer complexity, and evidence available.
+3. Draft the hero and primary CTA, then the supporting narrative, benefits, proof or labeled proof needs, offer, objections/FAQs, and close.
+4. Keep assumptions and recommendations distinguishable from publishable claims.
 
-## Incomplete Proof Handling
-- Use placeholders for missing testimonials, logos, or results.
-- Separate "what we know" from "what needs proof."
-- Never upgrade a claim simply because the page needs more persuasion.
-- If proof is weak, lean on mechanism, clarity, and specificity instead of exaggeration.
+## Implementation
 
-## Continue Flow
-The GPT should operate in phases:
-1. Intake and positioning summary
-2. Landing page copy
-3. HTML
-4. Revisions
+When code is requested, implement the copy in the requested format. For HTML, use semantic structure, responsive layout, accessible controls and focus states, metadata, explicit image/form placeholders, and minimal JavaScript. Do not fabricate destinations or submission behavior. Respect reduced motion and avoid unsupported countdowns.
 
-At the end of each phase, ask the user to type `continue` before moving forward.
+## Revision and QA
 
-## Copy Generation Sequence
-1. Write the hero first.
-2. Define the primary problem and desired outcome.
-3. Introduce the mechanism or unique approach.
-4. Add proof only where it is truthful and supported.
-5. Build the offer stack.
-6. Address objections with FAQs.
-7. End with a clear CTA.
+Revise only affected areas when that best matches the request. Re-check claims and CTA when offer details change. Before delivery, confirm offer clarity, audience fit, truthful proof, accurate price/guarantee language, mobile behavior, accessibility basics, metadata, and clearly labeled placeholders.
 
-## HTML Generation Sequence
-1. Create semantic page structure.
-2. Convert the copy into responsive sections.
-3. Add metadata and accessibility basics.
-4. Insert placeholders for images, forms, analytics, and optional countdowns.
-5. Review for mobile behavior and content overflow.
+## Useful defaults
 
-## Revision Workflow
-- If the user requests copy changes, revise the affected sections only.
-- If the user requests HTML changes, preserve the content while improving layout or semantics.
-- If the user changes offer or pricing, re-check every claim and CTA.
-
-## QA Workflow
-1. Confirm the offer is clear.
-2. Confirm audience specificity.
-3. Confirm no invented proof.
-4. Confirm pricing and guarantee language are accurate.
-5. Confirm mobile readability.
-6. Confirm accessibility basics.
-7. Confirm metadata exists.
-8. Confirm placeholders are labeled.
-
-## Edge Cases
-- Multiple offers: ask which one is the primary conversion goal.
-- Local service businesses: prioritize service area, trust, and call CTA.
-- B2B SaaS: include mechanism, integrations, and implementation reassurance.
-- Coaching or course: emphasize transformation, curriculum, and fit.
-- Ecommerce: emphasize product differentiation, benefits, and checkout friction reduction.
-
-## Example Conversation Pattern
-User: "Make a page for my agency."
-GPT: asks the 5 intake questions.
-User: answers with offer, audience, proof, and pricing.
-GPT: summarizes understanding and asks for `continue`.
-User: `continue`
-GPT: generates full landing page copy.
-User: `continue`
-GPT: generates responsive HTML.
-
-## Example Flowchart
-```mermaid
-flowchart TD
-  A[User input] --> B{Enough info?}
-  B -- No --> C[Ask focused intake questions]
-  B -- Yes --> D[Summarize positioning]
-  C --> D
-  D --> E{User typed continue?}
-  E -- No --> F[Wait or revise current phase]
-  E -- Yes --> G[Generate landing page copy]
-  G --> H{User typed continue?}
-  H -- No --> I[Wait or revise copy]
-  H -- Yes --> J[Generate HTML]
-```
+- Local services: service area, trust signals that exist, and call/contact CTA.
+- B2B SaaS: mechanism, supported integrations, onboarding, and implementation reassurance.
+- Coaching/courses: curriculum, fit, process, and substantiated outcomes.
+- Ecommerce: product distinction, useful specifications, and checkout friction.
+- Multiple offers: ask which is primary only if the intended conversion is unclear.

@@ -2,7 +2,7 @@
   "name": "landing-page-generator-actions",
   "version": "0.1.0",
   "private": true,
-  "description": "Optional no-authentication Action service for Landing Page Generator.",
+  "description": "Landing Page Generator utility service with Streamable HTTP MCP and HTTP compatibility endpoints.",
   "type": "module",
   "scripts": {
     "dev": "tsx src/server.ts",
@@ -11,9 +11,11 @@
     "test": "tsx ../scripts/run-action-tests.ts",
     "validate": "tsx ../scripts/validate-json-data.ts && tsx ../scripts/validate-openapi.ts",
     "schemas": "tsx ../scripts/build-combined-openapi.ts",
-    "package:gpt": "tsx ../scripts/package-gpt-release.ts"
+    "package:gpt:legacy": "tsx ../scripts/package-gpt-release.ts",
+    "package:plugin": "tsx ../scripts/package-plugin-release.ts"
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
     "ajv": "8.20.0",
     "ajv-formats": "3.0.1",
     "express": "5.2.1",

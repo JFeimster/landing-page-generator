@@ -1,0 +1,10 @@
+# Plugin release process
+
+1. Verify the implementation and run `npm --prefix services run build`, `npm --prefix services test`, and `npm --prefix services run validate`.
+2. Deploy the existing service using the verified hosting project. Confirm the actual HTTPS `/mcp` URL, transport, and authentication behavior. Configure platform-level rate limits appropriate to that hosting model.
+3. Set `MCP_SERVER_URL` to the verified `/mcp` endpoint, `MCP_AUTH_TYPE` to the observed supported auth type, and `MCP_ALLOWED_HOSTS` to the hostname configured in the deployed service. For non-`none` auth, set `MCP_AUTH_CONFIG` to non-secret connection metadata only. Do not include tokens, client secrets, or API keys.
+4. Run `npm --prefix services run package:plugin`. Packaging validates plugin identity/version, prompt order/text/type, skill frontmatter, referenced files, knowledge reference count, endpoint shape, and any compatibility manifest. It refuses missing/unresolved connection data. The template file is not included.
+5. Inspect the archive: `plugin.json` must be at ZIP root, and the referenced icon, skill, and references must be present. The artifact is `dist/landing-page-generator-plugin-0.12.0.zip`.
+6. In Plugin Creator, choose the existing Landing Page Generator and its update/edit action, then import the validated ZIP as an update. Confirm the existing plugin identity before saving. Review the imported skill and connection metadata, keep its current audience and installed connections, and verify the icon and all three prompts remain in their original order. Run the available tool checks against the verified server. Save the update to the existing plugin; do not choose the create-plugin flow.
+
+The GitHub workflow `Plugin Release Candidate` is manual and requires the verified endpoint, auth type, and allowed host. It runs build, tests, schema validation, and packaging before storing the ZIP as a workflow artifact. It does not upload the plugin, deploy the service, or update the installed plugin. Missing connection data intentionally blocks a release artifact.
