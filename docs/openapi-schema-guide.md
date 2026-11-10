@@ -1,4 +1,4 @@
 # Openapi Schema Guide
 
-Where schemas live, how to edit them, and how to paste or import them into GPT Builder.
+OpenAPI contracts are generated compatibility artifacts. The runtime registry and Zod schemas are the source of truth; see [MCP tools](mcp-tools.md) for the primary service interface.
 

@@ -1,12 +1,55 @@
-name: Release
+name: Plugin Release Candidate
 
 on:
   workflow_dispatch:
+    inputs:
+      mcp_server_url:
+        description: Verified HTTPS /mcp endpoint for the existing service
+        required: true
+        type: string
+      mcp_auth_type:
+        description: Verified authentication configuration
+        required: true
+        type: choice
+        options: [none, oauth, mixed, api_key]
+      mcp_allowed_host:
+        description: Host configured in the deployed MCP_ALLOWED_HOSTS setting
+        required: true
+        type: string
+      mcp_auth_config:
+        description: Optional non-secret MCP auth metadata JSON (no tokens/secrets)
+        required: false
+        type: string
 
 jobs:
-  release:
+  package:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Package release placeholder
-        run: echo "Package GPT release here"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: services/package-lock.json
+      - run: npm ci
+        working-directory: services
+      - run: npm run build
+        working-directory: services
+      - run: npm run validate
+        working-directory: services
+      - run: npm test
+        working-directory: services
+      - name: Package existing plugin
+        run: npm run package:plugin
+        working-directory: services
+        env:
+          MCP_SERVER_URL: ${{ inputs.mcp_server_url }}
+          MCP_AUTH_TYPE: ${{ inputs.mcp_auth_type }}
+          MCP_ALLOWED_HOSTS: ${{ inputs.mcp_allowed_host }}
+          MCP_AUTH_CONFIG: ${{ inputs.mcp_auth_config }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: landing-page-generator-plugin-0.12.0
+          path: dist/landing-page-generator-plugin-0.12.0.zip
+          if-no-files-found: error
+          retention-days: 30

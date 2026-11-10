@@ -1,40 +1,32 @@
 # Landing Page Generator
 
-Landing Page Generator is a custom GPT project for creating high-converting landing page copy, responsive HTML, visual placeholder briefs, conversion QA, and optional no-authentication GPT Actions.
+Landing Page Generator is an existing plugin for creating, auditing, rewriting, and implementing landing pages. Its canonical package is `plugin/landing-page-generator/`; the package keeps its existing name, presentation, icon, and three starter prompts.
 
-## What this repo includes
+## Start here
 
-- GPT instructions and setup files
-- Knowledge files for landing page strategy, copywriting, design, HTML, and conversion optimization
-- OpenAPI schemas for GPT Actions
-- Optional TypeScript service scaffold for no-auth Actions
-- HTML templates and reusable components
-- Example landing pages
-- Documentation for setup, testing, deployment, and maintenance
-- A site-factory blueprint for evolving the project into reusable static sites, apps, embeds, APIs, and OAuth-enabled products
+- [Plugin installation](docs/plugin-installation.md)
+- [Architecture](docs/plugin-architecture.md)
+- [MCP tools](docs/mcp-tools.md)
+- [Release process](docs/plugin-release-process.md)
+- [Migration from GPT setup](docs/gpt-to-plugin-migration.md)
 
-## Core GPT workflow
+## Implemented service
 
-1. Gather intake details or analyze a website URL.
-2. Generate complete landing page copy.
-3. Generate production-ready responsive HTML.
-4. Validate proof, claims, SEO, accessibility, and conversion elements.
-5. Package or deploy the final landing page.
+The TypeScript service provides 12 deterministic utilities through existing HTTP endpoints and a Streamable HTTP MCP adapter at `/mcp`. See [services/README.md](services/README.md) and [actions/README.md](actions/README.md). URL inspection is restricted to public destinations. Scores are writing signals rather than conversion forecasts; proof checks flag claims and do not establish factual truth.
 
-## Quick start
+The MCP code is implemented locally. A production endpoint, hosting configuration, and authentication requirements have not been verified, so this repository does not ship a live server URL or portable `mcp.json` yet.
 
-1. Upload files from `/knowledge` and `/data` to the GPT Knowledge area.
-2. Paste `/gpt/instructions.md` into the GPT instructions field.
-3. Add Actions from `/actions/landing-page-generator-actions.openapi.yaml`.
-4. Set Action authentication to `None`.
-5. Test the GPT using the examples in `/examples`.
+## Repository assets
 
-## Repository structure
+`plugin/` owns identity and skills; `knowledge/`, `data/`, `templates/`, `examples/`, and `site-factory/` preserve product guidance, catalogs, examples, and template specifications. Specifications and catalogs are not executable generators. Existing GPT instructions and OpenAPI contracts remain historical or compatibility materials.
 
-See `/docs/getting-started.md` and `/docs/gpt-setup.md` for setup details.
+## Development
 
-## Product expansion
+```powershell
+npm --prefix services ci
+npm --prefix services run build
+npm --prefix services test
+npm --prefix services run validate
+```
 
-Explore the [site-factory specification library](site-factory/README.md) for catalogs, template contracts, examples, and implementation planning.
-
-The current repository is the landing-page foundation of a broader launch system. See `/docs/site-factory-blueprint.md` for the recommended template architecture, reusable packages, design packs, generator design, and phased implementation plan. See `/docs/roadmap.md` for the prioritized backlog.
+See [docs/getting-started.md](docs/getting-started.md), [docs/testing.md](docs/testing.md), and [docs/troubleshooting.md](docs/troubleshooting.md).
