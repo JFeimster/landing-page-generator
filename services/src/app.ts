@@ -3,6 +3,7 @@ import { ZodError } from 'zod';
 import { router } from './routes.js';
 import { ActionError } from './lib/responseHelpers.js';
 import { handleMcpRequest } from './mcp.js';
+import { registerSiteRoutes } from './site.js';
 export function createApp(options: { limit?: number; windowMs?: number } = {}) {
   const app = express();
   app.disable('x-powered-by');
@@ -28,6 +29,7 @@ export function createApp(options: { limit?: number; windowMs?: number } = {}) {
     next();
   });
   app.use(express.json({ limit: '512kb', strict: true }));
+  registerSiteRoutes(app);
   app.all('/mcp', (req, res, next) => { void handleMcpRequest(req, res).catch(next); });
   app.use(router);
   app.use((_req, res) => res.status(404).json({ status: 'error', error: { code: 'NOT_FOUND', message: 'Unknown endpoint.' } }));
